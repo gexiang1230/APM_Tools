@@ -6,6 +6,7 @@ class AssetsBatch():
         self.deviceAssort=deviceAssort
         self.ownerApart=ownerApart
         self.deviceSystemId=deviceSystemId
+
     def AssetsReport(self):
         '''生成资产'''
         app = xw.App(visible=True, add_book=False)
@@ -15,8 +16,7 @@ class AssetsBatch():
         sht.range('B7').options(transpose=True).value = self.devicename # 设备名称
         sht.range('Q7').options(transpose=True).value=self.deviceAssort #设备分类
         sht.range('H7').options(transpose=True).value = self.ownerApart #所属科室
-        sht.range('V7').options(transpose=True).value = self.deviceSystemId
-        sht.clear()
+        sht.range('X7').options(transpose=True).value = self.deviceSystemId
         wb.save() #保存表
         wb.close() #关闭表
         app.quit()
