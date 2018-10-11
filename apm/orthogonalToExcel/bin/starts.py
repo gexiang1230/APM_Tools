@@ -1,4 +1,4 @@
-# from __future__ import print_function
+from __future__ import print_function
 
 from allpairspy import AllPairs
 
@@ -13,4 +13,4 @@ parameters = [
 
 for i, pairs in enumerate(AllPairs(parameters)):
     print("{:2d}: {}".format(i, pairs))
-
+print(AllPairs(parameters))
