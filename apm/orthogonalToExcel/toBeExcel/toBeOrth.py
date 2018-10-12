@@ -1,14 +1,50 @@
 '''excel 表格生成'''
-import xlwings as xw
+# import xlwings as xw
+import csv
+
 
 class toBeOrth():
-    def __init__(self,allkeys,allvalues,path):#参数需要表头和body,两个参数
-        self.allkeys=allkeys
-        self.allvalues=allvalues
-        self.path=path
-    def tobOrth(self):
-        app=xw.App(visible=False,add_book=False)
-        wb=app.books.open(self.path)
-        sht=wb.sheet['Sheet1']
+    def __init__(self,allpairs,path):#参数需要表头和body,两个参数
+        self.allpairs=allpairs
+        self.path=path                     #最后excel的地址
+    def tobOrth(self):#生成csv文件
+        with open(self.path, 'w', newline='', encoding='utf8') as fv:
+            w=csv.writer(fv)
+            for row in self.allpairs:
+                w.writerow(row)
 
+
+if __name__=='__main__':
+    li=[
+        ['账户名', '密码', '确认密码', '邮箱', '按钮'],
+        [' 空', ' 空', ' 空', ' 空', ' 确定'],
+        ['不存在', '字母结合', '格式正确', '超长', ' 确定'],
+        ['超长', '正常', '格式不正确', '超短', ' 确定'],
+        ['超短', '纯数字', '格式不正确', '不匹配', '取消'],
+        ['正常', '纯数字', '格式正确', '正常', ' 确定'],
+        ['正常', '正常', ' 空', '不匹配', '取消'],
+        ['超短', '字母结合', ' 空', '正常', '取消'],
+        ['超长', ' 空', '格式正确', '不匹配', '取消'],
+        ['不存在', ' 空', '格式不正确', '正常', '取消'],
+        [' 空', '纯数字', '格式不正确', '超长', '取消'],
+        ['超短', '正常', '格式正确', ' 空', '取消'],
+        [' 空', '字母结合', '格式正确', '超短', '取消'],
+        ['不存在', '纯数字', ' 空', '超短', '取消'],
+        ['超长', '字母结合', ' 空', ' 空', '取消'],
+        ['正常', '字母结合', '格式不正确', ' 空', '取消'],
+        ['超短', ' 空', ' 空', '超长', ' 确定'],
+        ['正常', ' 空', ' 空', '超短', '取消'],
+        ['超长', '纯数字', ' 空', ' 空', '取消'],
+        ['不存在', '正常', ' 空', '不匹配', ' 确定'],
+        [' 空', '正常', ' 空', '正常', '取消'],
+        ['超长', '正常', ' 空', '超长', '取消'],
+        ['超长', '字母结合', ' 空', '正常', '取消'],
+        [' 空', '字母结合', ' 空', '不匹配', '取消'],
+        ['不存在', '字母结合', ' 空', ' 空', '取消'],
+        ['正常', '字母结合', ' 空', '超长', '取消'],
+        ['超短', '字母结合', ' 空', '超短', '取消']
+        ]
+    path=r"C:\Users\502760349\Desktop\new.csv"
+    tb=toBeOrth(li,path)
+    tb.tobOrth()
 

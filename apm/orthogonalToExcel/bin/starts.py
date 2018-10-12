@@ -1,16 +1,10 @@
-from __future__ import print_function
+from pylib.dbOpera import generationParams
+from toBeExcel.toBeOrth import toBeOrth
+path = r"C:\Users\502760349\Desktop\new.csv" #生成csv文件地址
 
-from allpairspy import AllPairs
+paras1 = r'C:\Users\502760349\Desktop\database\new.txt'###参数地址
 
-parameters = [
-    ["Windows", "Linux", "MAC","小花"],
-    ["Firefox", "Opera", "IE","小明"],
-    ["Chinese", "English","C"],
-
-]
-# sample parameters are is taken from
-# http://www.stsc.hill.af.mil/consulting/sw_testing/improvement/cst.html
-
-for i, pairs in enumerate(AllPairs(parameters)):
-    print("{:2d}: {}".format(i, pairs))
-print(AllPairs(parameters))
+db=generationParams(paras1) #生成参数实例
+datas=db.genPara()          #调用生成正交数据的方法
+tb = toBeOrth(datas, path)  #输出实例
+tb.tobOrth()                #调用生成csv方法
