@@ -1,0 +1,1 @@
+paras1=r'C:\Users\502760349\Desktop\database\new.txt'#正交txet的位置
